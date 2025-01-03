@@ -10,7 +10,7 @@ const HomePage = () => {
   const backendUri = process.env.NEXT_PUBLIC_BACKEND_URI;
 
   const [isModalOpen, setModalOpen] = useState(false);
-  const [availableSlots, setAvailableSlots] = useState();
+  const [availableSlots, setAvailableSlots] = useState(null);
   const [bookingObj, setBookingObj] = useState({
     name: "",
     contact: "",
@@ -27,6 +27,8 @@ const HomePage = () => {
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    setBookingObj(null)
+    setAvailableSlots(null)
     setBookingDetails(null); 
   };
 
@@ -94,13 +96,13 @@ const HomePage = () => {
               <h2 className="text-lg font-medium text-green-600">
                 Booking Confirmed!
               </h2>
-              <p>Booking ID: {bookingDetails._id}</p>
-              <p>Date: {bookingDetails.date}</p>
-              <p>Time Slot: {bookingDetails.timeSlot}</p>
-              <p>Guests: {bookingDetails.guests}</p>
-              <p>Name: {bookingDetails.name}</p>
-              <p>Contact: {bookingDetails.contact}</p>
-              <p>Table Numbers: {bookingDetails.tableNumber.join(", ")}</p>
+              <p>Booking ID : {bookingDetails._id}</p>
+              <p>Date : {bookingDetails.date}</p>
+              <p>Time Slot : {bookingDetails.timeSlot}</p>
+              <p>Guests : {bookingDetails.guests}</p>
+              <p>Name : {bookingDetails.name}</p>
+              <p>Contact : {bookingDetails.contact}</p>
+              <p>Table No. : {bookingDetails.tableNumber.join(", ")}</p>
             </div>
           ) : (
             <TimeSlotSelector

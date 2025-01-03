@@ -7,8 +7,17 @@ const BookingForm = ({ bookingObj, setBookingObj, onBookingSuccess }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBookingObj((prev) => ({ ...prev, [name]: value }));
+  
+    if (name === "contact") {
+      const numericValue = value.replace(/\D/g, ""); 
+      if (numericValue.length <= 10) {
+        setBookingObj((prev) => ({ ...prev, [name]: numericValue }));
+      }
+    } else {
+      setBookingObj((prev) => ({ ...prev, [name]: value }));
+    }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +31,7 @@ const BookingForm = ({ bookingObj, setBookingObj, onBookingSuccess }) => {
       const data = await res.json();
       if (data.success) {
         console.log(data);
-        onBookingSuccess(data.booking); 
+        onBookingSuccess(data.booking);
       } else {
         alert(data.message);
       }
@@ -40,20 +49,23 @@ const BookingForm = ({ bookingObj, setBookingObj, onBookingSuccess }) => {
           <input
             type="text"
             name="name"
-            value={bookingObj.name}
+            value={bookingObj?.name}
             onChange={handleChange}
             className="w-full px-4 py-2 border text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
         </div>
         <div>
-          <label className="block mb-1 font-medium">Contact</label>
+          <label className="block mb-1 font-medium">Phone No.</label>
           <input
             type="text"
             name="contact"
-            value={bookingObj.contact}
+            value={bookingObj?.contact}
             onChange={handleChange}
+            maxLength="10" // Restricts input to 10 characters
             className="w-full px-4 py-2 border text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            pattern="^\d{10}$" // Ensures only numbers with exactly 10 digits
+            title="Please enter a valid 10-digit phone number"
             required
           />
         </div>
