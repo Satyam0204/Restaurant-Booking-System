@@ -51,14 +51,14 @@ const TimeSlotSelector = ({
                 No available slots for the selected date and guests.
               </p>
             )}
-          </>
-        )}
-      </div>
       <BookingForm
         bookingObj={bookingObj}
         setBookingObj={setBookingObj}
         onBookingSuccess={onBookingSuccess}
       />
+          </>
+        )}
+      </div>
     </>
   );
 };
