@@ -10,7 +10,7 @@ const HomePage = () => {
   const backendUri = process.env.NEXT_PUBLIC_BACKEND_URI;
 
   const [isModalOpen, setModalOpen] = useState(false);
-  const [availableSlots, setAvailableSlots] = useState([]);
+  const [availableSlots, setAvailableSlots] = useState();
   const [bookingObj, setBookingObj] = useState({
     name: "",
     contact: "",
