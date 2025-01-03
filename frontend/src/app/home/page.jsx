@@ -27,7 +27,7 @@ const HomePage = () => {
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    setBookingDetails(null); // Reset booking details on close
+    setBookingDetails(null); 
   };
 
   const handleBookingSuccess = (details) => {
