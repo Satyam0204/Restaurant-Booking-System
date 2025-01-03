@@ -3,7 +3,7 @@ const { createBooking, getBookings, checkAvailability, deleteBooking } = require
 
 const router = express.Router();
 
-router.get("/",checkAvailability);
+router.post("/check-availability",checkAvailability);
 router.post("/", createBooking); 
 router.get("/getAllBookings", getBookings);    
 router.delete("/:id", deleteBooking);
