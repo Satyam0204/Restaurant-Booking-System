@@ -16,12 +16,14 @@ const AvailabilityForm = ({ onCheckAvailability }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onCheckAvailability(formData);
-    setFormData({ date: "", guests: 1 }); 
+    setFormData({ date: "", guests: 1 });
   };
   const today = new Date().toISOString().split("T")[0];
   return (
     <div className="border w-full sm:w-3/5 flex flex-col justify-center items-center py-6 px-4">
-      <div className="text-slate-200 text-center m-4 text-xl sm:text-2xl">Book A Table</div>
+      <div className="text-slate-200 text-center m-4 text-xl sm:text-2xl">
+        Book A Table
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4 p-4 w-full sm:w-4/5">
         <div>
           <label className="text-slate-300 mb-1 font-medium">Date</label>
@@ -42,7 +44,8 @@ const AvailabilityForm = ({ onCheckAvailability }) => {
             name="guests"
             value={formData.guests}
             onChange={handleChange}
-            min="1"
+            min="1" // Minimum value is 1
+            max="32" // Maximum value is 32
             className="w-full px-4 py-2 border text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
